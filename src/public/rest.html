@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="zc-html">
+
+<head>
+    <meta charset="utf-8">
+    <title>USB Demo</title>
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"
+            integrity="sha512-PU5S6BA03fRv1Q5fpwXjg5nlRrgdoguZ74urFInkbABMCENyx5oP3hrDzYMMPh3qdLdknIvrGj3yqZ4JuU7Nag=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="util.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- CHART CONTAINER -->
+<div id="myChart" class="chart--container">
+    <a href="https://www.zingchart.com/" rel="noopener" class="zc-ref">Powered by ZingChart</a>
+    <label for="tree-aspect">Layout</label>
+    <select id="tree-aspect">
+        <option value="tree-right" selected>Right to left</option>
+        <option value="tree-left">Left to right</option>
+        <option value="tree-up">Bottom up</option>
+        <option value="tree-down">Top Down</option>
+        <option value="tree-radial">Circle</option>
+    </select>
+    <label for="tree-node">Node Connector Type</label>
+    <select id="tree-node">
+        <option value="arc">Arc</option>
+        <option value="line">Line</option>
+        <option value="side-before">Side Before</option>
+        <option value="side-after">Side After</option>
+        <option value="side-between">Side Between</option>
+        <option value="split" selected>Split</option>
+        <option value="sibling">Sibling</option>
+    </select>
+    <label for="tree-node">Node Shape</label>
+    <select id="tree-node-shape">
+        <option value="circle" selected>Circle</option>
+        <option value="square">Square</option>
+        <option value="diamond">Diamond</option>
+        <option value="triangle">Triangle</option>
+        <option value="star5">Star</option>
+        <option value="star6">Star Type 2</option>
+        <option value="star7">Star Type 3</option>
+        <option value="star8">Star Type 4</option>
+        <option value="rpoly5">Polygon</option>
+        <option value="gear5">Gear</option>
+        <option value="gear6">Gear 2</option>
+        <option value="gear7">Gear 3</option>
+        <option value="gear8">Gear 4</option>
+    </select>
+</div>
+
+<body class="zc-body">
+</body>
+<script>
+    const url = 'http://localhost:3000/all';
+    setInterval(async () => {
+        await fetch(url).then((response) => response.json()).then(drewAllItems);
+    }, 500);
+</script>
+</html>
